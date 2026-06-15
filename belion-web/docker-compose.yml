@@ -3,6 +3,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      # Runtime secrets are injected by Coolify at deploy time, not during `node ace build`.
+      # The Dockerfile forces SQLite for the build step regardless of these args.
+      args:
+        APP_KEY: ${APP_KEY:-buildtimekey01234567890123456789012}
     restart: unless-stopped
     ports:
       - "${PORT:-3333}:3333"
