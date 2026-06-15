@@ -11,6 +11,5 @@ tmp
 .cursor
 .vscode
 coverage
-tests
 npm-debug.log*
 .DS_Store
