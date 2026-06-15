@@ -1,6 +1,8 @@
 <header
-  x-data="{ open: false, companyOpen: false }"
-  class="sticky top-0 z-40 glass-nav"
+  x-data="{ open: false, companyOpen: false, scrolled: false }"
+  @scroll.window="scrolled = window.scrollY > 20"
+  :class="scrolled ? 'shadow-lg shadow-brand-navy/5' : ''"
+  class="sticky top-0 z-40 glass-nav transition-shadow duration-300"
 >
   <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
     <div class="flex h-16 items-center justify-between">
@@ -52,12 +54,7 @@
           </a>
         @endeach
 
-        <a
-          href="/contact"
-          class="ml-2 rounded-full bg-brand-cta px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-cta/30 hover:bg-brand-blue transition"
-        >
-          Get a Quote
-        </a>
+        <a href="/contact" class="ml-2 btn-primary px-5 py-2.5">Get a Quote</a>
       </div>
 
       <button

@@ -1,0 +1,49 @@
+<section class="bg-white">
+  <div class="container-x py-16 lg:py-24">
+    <div class="max-w-3xl mb-14" data-animate="fade-up">
+      <p class="eyebrow mb-4">Core Business Areas</p>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy mb-4">
+        Integrated Solutions Across Key Sectors
+      </h2>
+      <p class="text-brand-slate text-lg leading-relaxed">
+        We operate across complementary business areas, combining technology, quality supply and
+        creative services into reliable, end-to-end delivery.
+      </p>
+    </div>
+
+    <div class="space-y-16 lg:space-y-24">
+      @each((area, index) in company.businessAreas)
+        <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+          <div class="{{ index % 2 === 1 ? 'lg:order-2' : '' }}" data-animate="{{ index % 2 === 1 ? 'fade-up' : 'fade-up' }}">
+            <div class="group relative overflow-hidden rounded-3xl shadow-xl">
+              <img src="{{ area.image }}" alt="{{ area.title }}" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/40 to-transparent"></div>
+              <div class="absolute left-5 top-5 rounded-full bg-white/95 px-4 py-1.5 font-display text-sm font-bold text-brand-blue shadow">
+                0{{ index + 1 }}
+              </div>
+            </div>
+          </div>
+
+          <div data-animate="fade-up">
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-brand-navy mb-4">{{ area.title }}</h3>
+            <p class="text-brand-slate text-lg leading-relaxed mb-6">{{ area.description }}</p>
+            <ul class="space-y-3 mb-8">
+              @each(point in area.points)
+                <li class="flex items-center gap-3 text-brand-ink">
+                  <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-ice text-brand-blue">
+                    <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                  </span>
+                  <span class="font-medium">{{ point }}</span>
+                </li>
+              @endeach
+            </ul>
+            <a href="{{ area.href }}" class="btn-outline">
+              Learn more
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+            </a>
+          </div>
+        </div>
+      @endeach
+    </div>
+  </div>
+</section>

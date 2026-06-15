@@ -1,26 +1,38 @@
-<section class="relative overflow-hidden bg-gradient-to-br from-brand-deep via-brand-navy to-brand-blue text-white">
-  <div class="absolute inset-0 opacity-30">
+<section class="relative overflow-hidden bg-brand-ink text-white">
+  <div class="absolute inset-0">
     <img src="/images/hero-bg.jpg" alt="" class="h-full w-full object-cover" data-animate="parallax" loading="eager" />
   </div>
-  <div class="absolute inset-0 bg-gradient-to-r from-brand-deep/95 via-brand-navy/80 to-brand-blue/60"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-brand-ink/95 via-brand-navy/85 to-brand-blue/55"></div>
+  <div class="absolute inset-0 grid-pattern opacity-40"></div>
 
-  <div class="relative mx-auto max-w-7xl section-padding min-h-[85vh] flex items-center">
+  <div class="relative container-x py-24 sm:py-28 lg:py-36">
     <div class="max-w-3xl" data-animate="fade-up">
-      <p class="text-brand-sky font-semibold text-sm uppercase tracking-widest mb-4">Est. {{ company.established }}</p>
-      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+      <p class="eyebrow eyebrow-light mb-6">{{ company.name }} &bull; Est. {{ company.established }}</p>
+
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] mb-6">
         {{ company.tagline }}.<br />
-        <span class="text-brand-sky">{{ company.motto }}</span>
+        <span class="text-gradient">{{ company.motto }}.</span>
       </h1>
-      <p class="text-lg sm:text-xl text-slate-200 leading-relaxed mb-8 max-w-2xl">
+
+      <p class="text-lg text-slate-200/90 leading-relaxed mb-8 max-w-2xl">
         {{ company.description }}
       </p>
+
+      <div class="mb-10 flex flex-wrap gap-3">
+        @each(cred in company.heroCredentials)
+          <div class="rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 backdrop-blur-sm">
+            <div class="text-[0.65rem] font-semibold uppercase tracking-wider text-brand-sky">{{ cred.label }}</div>
+            <div class="font-display text-sm font-bold text-white">{{ cred.value }}</div>
+          </div>
+        @endeach
+      </div>
+
       <div class="flex flex-wrap gap-4">
-        <a href="/services" class="rounded-full bg-white px-8 py-3.5 font-semibold text-brand-navy shadow-xl hover:bg-brand-ice transition">
-          Our Services
+        <a href="/services" class="btn-light">
+          Explore Services
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
         </a>
-        <a href="/contact" class="rounded-full border-2 border-white/40 px-8 py-3.5 font-semibold text-white hover:bg-white/10 transition">
-          Get a Quote
-        </a>
+        <a href="/contact" class="btn-ghost-light">Request a Quote</a>
       </div>
     </div>
   </div>

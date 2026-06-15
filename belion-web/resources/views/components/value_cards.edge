@@ -1,0 +1,44 @@
+<section class="relative overflow-hidden bg-brand-navy text-white">
+  <div class="absolute inset-0 grid-pattern opacity-30"></div>
+  <div class="relative container-x py-16 lg:py-24">
+    <div class="max-w-3xl mb-14" data-animate="fade-up">
+      <p class="eyebrow eyebrow-light mb-4">Mission, Vision &amp; Values</p>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        Guiding Principles That Drive Everything We Do
+      </h2>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-3" data-animate="stagger-children">
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-sky/20 text-brand-sky">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3">Our Mission</h3>
+        <p class="text-slate-300 leading-relaxed">{{ company.mission }}</p>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-sky/20 text-brand-sky">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3">Our Vision</h3>
+        <p class="text-slate-300 leading-relaxed">{{ company.vision }}</p>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-sky/20 text-brand-sky">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3">Our Values</h3>
+        <ul class="space-y-2 text-slate-300">
+          @each(principle in company.principles)
+            <li class="flex items-center gap-2">
+              <span class="h-1.5 w-1.5 rounded-full bg-brand-sky"></span>
+              {{ principle.title }}
+            </li>
+          @endeach
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

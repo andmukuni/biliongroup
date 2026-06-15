@@ -2,7 +2,7 @@
 
 <div class="{{ alignClass }} max-w-3xl mb-12" data-animate="fade-up">
   @if(sectionSubtitle)
-    <p class="text-brand-blue font-semibold text-sm uppercase tracking-wider mb-3">{{ sectionSubtitle }}</p>
+    <p class="eyebrow {{ sectionAlign === 'center' ? 'justify-center' : '' }} mb-4">{{ sectionSubtitle }}</p>
   @endif
   <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy mb-4">{{ sectionTitle }}</h2>
   @if(sectionDescription)

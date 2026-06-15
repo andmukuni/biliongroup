@@ -1,0 +1,41 @@
+<section class="bg-white">
+  <div class="container-x py-16 lg:py-24">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+      <div data-animate="fade-up">
+        <div class="relative">
+          <div class="overflow-hidden rounded-3xl shadow-xl">
+            <img src="/images/about-team.jpg" alt="{{ company.name }} team" class="aspect-[4/3] w-full object-cover" loading="lazy" />
+          </div>
+          <div class="absolute -bottom-6 -right-2 sm:right-6 rounded-2xl bg-brand-navy px-6 py-5 text-white shadow-2xl">
+            <div class="font-display text-3xl font-extrabold text-brand-sky">{{ company.established }}</div>
+            <div class="text-xs uppercase tracking-wider text-slate-300">Trusted since</div>
+          </div>
+        </div>
+      </div>
+
+      <div data-animate="fade-up">
+        <p class="eyebrow mb-4">Company Overview</p>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy mb-5">
+          Diversified Technology, Built for Africa
+        </h2>
+        <p class="text-brand-slate text-lg leading-relaxed mb-8">
+          {{ company.extendedDescription }}
+        </p>
+
+        <div class="space-y-5">
+          @each(feature in company.overviewFeatures)
+            <div class="flex gap-4">
+              <span class="icon-badge">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </span>
+              <div>
+                <h3 class="font-display font-bold text-brand-navy mb-1">{{ feature.title }}</h3>
+                <p class="text-brand-slate leading-relaxed">{{ feature.description }}</p>
+              </div>
+            </div>
+          @endeach
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -3,99 +3,46 @@
 @section('main')
   @include('components/hero_home')
 
-  <section class="bg-brand-ice border-y border-brand-sky/20">
-    <div class="mx-auto max-w-7xl section-padding">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8" data-animate="stagger-children">
+  <section class="border-b border-slate-200/70 bg-white">
+    <div class="container-x py-12">
+      <div class="grid grid-cols-2 gap-8 lg:grid-cols-4" data-animate="stagger-children">
         @each(stat in company.stats)
-          <div class="text-center">
-            <div class="font-display text-4xl sm:text-5xl font-bold text-brand-blue mb-2" data-counter="{{ stat.value }}">
+          <div class="text-center lg:text-left">
+            <div class="font-display text-4xl sm:text-5xl font-extrabold text-gradient" data-counter="{{ stat.value }}">
               {{ stat.value }}
             </div>
-            <div class="text-brand-slate font-medium">{{ stat.label }}</div>
+            <div class="mt-1 text-sm font-medium uppercase tracking-wider text-brand-slate">{{ stat.label }}</div>
           </div>
         @endeach
       </div>
     </div>
   </section>
 
-  <section class="section-padding mx-auto max-w-7xl">
-    @set('sectionSubtitle', 'What We Do')
-    @set('sectionTitle', 'Products & Services')
-    @set('sectionDescription', 'Innovative tech and multimedia solutions for B2B and B2C markets.')
-    @set('sectionAlign', 'center')
-    @include('components/section_heading')
+  @include('components/company_overview')
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-animate="stagger-children">
-      @each((service, index) in company.itServices)
-        @if(index < 6)
-        <a href="/services" class="group rounded-2xl border border-brand-ice bg-white p-6 shadow-sm hover:shadow-xl hover:border-brand-sky/50 transition duration-300">
-          <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-ice text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition">
-            <span class="font-display font-bold">{{ index + 1 }}</span>
-          </div>
-          <h3 class="font-display font-semibold text-brand-navy mb-2 group-hover:text-brand-blue transition">{{ service }}</h3>
-          <span class="text-sm text-brand-blue font-medium">Learn more →</span>
-        </a>
-        @endif
-      @endeach
-    </div>
-  </section>
+  @include('components/business_areas')
 
-  <section class="bg-brand-navy text-white overflow-hidden" data-sticky-feature>
-    <div class="mx-auto max-w-7xl section-padding">
-      <div class="grid lg:grid-cols-2 gap-12 items-start">
-        <div data-sticky-pin class="lg:py-12">
-          @set('sectionSubtitle', 'Why Belion')
-          @set('sectionTitle', 'Our Corporate Principles')
-          @set('sectionDescription', 'Committed to good corporate principles and practices.')
-          @set('sectionAlign', 'left')
-          @include('components/section_heading')
-        </div>
-        <div class="space-y-6">
-          @each((principle, index) in company.principles)
-            <div data-sticky-panel class="rounded-2xl bg-white/10 backdrop-blur p-8 border border-white/10" data-animate="fade-up">
-              <div class="text-brand-sky font-display text-5xl font-bold mb-4">0{{ index + 1 }}</div>
-              <h3 class="font-display text-2xl font-bold mb-3">{{ principle.title }}</h3>
-              <p class="text-slate-300 leading-relaxed">{{ principle.description }}</p>
-            </div>
-          @endeach
-        </div>
-      </div>
-    </div>
-  </section>
+  @include('components/value_cards')
 
-  <section class="section-padding mx-auto max-w-7xl">
-    @set('sectionSubtitle', 'Portfolio')
-    @set('sectionTitle', 'Projects Showcase')
-    @set('sectionDescription', 'Delivering across telecoms, industrial, security, and technology sectors.')
-    @set('sectionAlign', 'center')
-    @include('components/section_heading')
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" data-animate="stagger-children">
-      @each(category in company.projectCategories)
-        <a href="/projects#{{ category.slug }}" class="group relative overflow-hidden rounded-2xl aspect-[4/3] shadow-lg">
-          <img src="{{ category.image }}" alt="{{ category.title }}" class="h-full w-full object-cover group-hover:scale-105 transition duration-700" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/40 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-5">
-            <h3 class="font-display font-bold text-white text-lg">{{ category.title }}</h3>
-            <p class="text-brand-sky text-sm mt-1">{{ category.items.length }} services</p>
-          </div>
-        </a>
-      @endeach
-    </div>
-  </section>
+  @include('components/why_choose')
 
   @include('components/testimonial_carousel')
 
-  <section class="section-padding bg-brand-ice">
-    <div class="mx-auto max-w-7xl text-center" data-animate="fade-up">
-      <p class="text-sm font-semibold uppercase tracking-wider text-brand-blue mb-6">Fully Compliant</p>
-      <div class="flex flex-wrap justify-center gap-4">
-        @each(cert in company.certifications)
-          <div class="rounded-full bg-white px-6 py-3 shadow-sm border border-brand-sky/30">
-            <span class="font-display font-bold text-brand-navy">{{ cert.name }}</span>
-            <span class="text-brand-slate text-sm ml-2">{{ cert.short }}</span>
-          </div>
-        @endeach
+  <section class="bg-white">
+    <div class="container-x pb-16 lg:pb-24">
+      <div class="rounded-3xl border border-slate-200/70 bg-brand-ice px-6 py-12 text-center" data-animate="fade-up">
+        <p class="eyebrow justify-center mb-4">Fully Compliant</p>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-brand-navy mb-8">
+          Registered, Licensed &amp; Tax Compliant
+        </h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          @each(cert in company.certifications)
+            <div class="rounded-full bg-white px-5 py-2.5 shadow-sm border border-slate-200/70">
+              <span class="font-display font-bold text-brand-navy">{{ cert.name }}</span>
+              <span class="text-brand-slate text-sm ml-2">{{ cert.short }}</span>
+            </div>
+          @endeach
+        </div>
       </div>
     </div>
   </section>

@@ -49,6 +49,84 @@ export const company = {
     { label: 'ZPPA Categories', value: '22' },
     { label: 'Compliance', value: '100%' },
   ],
+  heroCredentials: [
+    { label: 'PACRA', value: '120190000397' },
+    { label: 'ZPPA Reg.', value: '59036' },
+    { label: 'ZICTA', value: 'SET/RDL/2959' },
+  ],
+  overviewFeatures: [
+    {
+      title: 'Customer-Centric Solutions',
+      description: 'Smart, scalable and customer-focused digital products built around real needs.',
+      icon: 'users',
+    },
+    {
+      title: 'End-to-End Delivery',
+      description: 'From sourcing and development to installation and after-sales technical support.',
+      icon: 'workflow',
+    },
+    {
+      title: 'Fully Compliant Partner',
+      description: 'PACRA, ZRA, ZPPA, NAPSA, WCFCB and ZICTA registered and tax compliant.',
+      icon: 'shield',
+    },
+  ],
+  businessAreas: [
+    {
+      title: 'Technology & Software',
+      description:
+        'Custom software, mobile and web applications, USSD platforms and managed IT support engineered for B2B and B2C markets across Africa.',
+      image: '/images/services-it.jpg',
+      points: ['Software & App Development', 'Web & USSD Platforms', 'Managed IT Support'],
+      href: '/services',
+    },
+    {
+      title: 'Telecoms & Networking',
+      description:
+        'Network infrastructure, fibre optic installations, telecoms towers, structured cabling, CCTV and access control delivered to spec.',
+      image: '/images/projects-telecom.jpg',
+      points: ['Fibre Optics & Towers', 'Structured Cabling', 'CCTV & Access Control'],
+      href: '/projects#telecoms-networking',
+    },
+    {
+      title: 'Industrial & Equipment Supply',
+      description:
+        'General equipment supply spanning industrial electricals, mining machinery, heavy-duty vehicles, generators, fuel and building materials.',
+      image: '/images/projects-industrial.jpg',
+      points: ['Mining & Industrial Machinery', 'Heavy-Duty Vehicles', 'Fuel & Power Supply'],
+      href: '/projects#industrial-mining',
+    },
+    {
+      title: 'Multimedia & Creative',
+      description:
+        'Branding, advertising and design, social media management, media buying and audio-visual production that grow brands.',
+      image: '/images/services-multimedia.jpg',
+      points: ['Branding & Design', 'Social Media Management', 'Audio-Visual Production'],
+      href: '/services',
+    },
+  ],
+  whyChoose: [
+    {
+      title: 'Proven Across Sectors',
+      description:
+        'Delivering across telecoms, mining, industrial, public sector and technology since 2019.',
+    },
+    {
+      title: 'Quality & Compliance',
+      description:
+        'Full regulatory compliance and documentation that meet public and private procurement standards.',
+    },
+    {
+      title: 'After-Sales Support',
+      description:
+        'Strong technical support and after-sales service keep your operations running.',
+    },
+    {
+      title: 'Local Insight, Global Standards',
+      description:
+        'Zambian-owned with international sourcing partnerships and best-practice delivery.',
+    },
+  ],
   itServices: [
     'Software Development Services',
     'Mobile Apps Development (Android & iOS)',

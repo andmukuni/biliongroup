@@ -1,42 +1,51 @@
-<footer class="bg-brand-navy text-white">
-  <div class="mx-auto max-w-7xl section-padding pb-8">
-    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue font-display font-bold">B</div>
+<footer class="relative overflow-hidden bg-brand-navy text-white">
+  <div class="absolute inset-0 grid-pattern opacity-20"></div>
+  <div class="relative container-x py-16">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-sky font-display font-bold text-lg shadow-lg">B</div>
           <div>
-            <div class="font-display font-bold">Belion Groupe</div>
+            <div class="font-display font-bold text-lg leading-tight">Belion Groupe</div>
             <div class="text-sm text-brand-sky">{{ company.motto }}</div>
           </div>
         </div>
-        <p class="text-sm text-slate-300 leading-relaxed">
-          Diversified technology and multimedia solutions since {{ company.established }}.
+        <p class="text-sm text-slate-300 leading-relaxed mb-6 max-w-xs">
+          Diversified technology, multimedia and supply solutions delivered with compliance and care since {{ company.established }}.
         </p>
+        <div class="flex flex-wrap gap-2">
+          @each(cert in company.certifications)
+            <span class="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300">{{ cert.name }}</span>
+          @endeach
+        </div>
       </div>
 
-      <div>
+      <div class="lg:col-span-2">
         <h3 class="font-display font-semibold mb-4 text-brand-sky">Company</h3>
-        <ul class="space-y-2 text-sm text-slate-300">
+        <ul class="space-y-2.5 text-sm text-slate-300">
           @each(item in company.nav.company)
             <li><a href="{{ item.href }}" class="hover:text-white transition">{{ item.label }}</a></li>
           @endeach
         </ul>
       </div>
 
-      <div>
+      <div class="lg:col-span-2">
         <h3 class="font-display font-semibold mb-4 text-brand-sky">Services</h3>
-        <ul class="space-y-2 text-sm text-slate-300">
-          <li><a href="/services" class="hover:text-white transition">IT & Technology</a></li>
+        <ul class="space-y-2.5 text-sm text-slate-300">
+          <li><a href="/services" class="hover:text-white transition">IT &amp; Technology</a></li>
           <li><a href="/services" class="hover:text-white transition">Multimedia</a></li>
           <li><a href="/projects" class="hover:text-white transition">Projects</a></li>
           <li><a href="/compliance" class="hover:text-white transition">Compliance</a></li>
         </ul>
       </div>
 
-      <div>
-        <h3 class="font-display font-semibold mb-4 text-brand-sky">Contact</h3>
-        <ul class="space-y-2 text-sm text-slate-300">
-          <li>{{ company.contact.address }}</li>
+      <div class="lg:col-span-4">
+        <h3 class="font-display font-semibold mb-4 text-brand-sky">Get in Touch</h3>
+        <ul class="space-y-2.5 text-sm text-slate-300">
+          <li class="flex items-start gap-2.5">
+            <svg class="h-5 w-5 shrink-0 text-brand-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            <span>{{ company.contact.address }}</span>
+          </li>
           @each(phone in company.contact.phones)
             <li><a href="tel:{{ phone }}" class="hover:text-white transition">{{ phone }}</a></li>
           @endeach

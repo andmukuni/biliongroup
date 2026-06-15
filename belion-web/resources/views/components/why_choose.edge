@@ -1,0 +1,29 @@
+<section class="bg-brand-ice">
+  <div class="container-x py-16 lg:py-24">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
+      <div data-animate="fade-up">
+        <p class="eyebrow mb-4">Why Belion Groupe</p>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy mb-5">
+          Your Advantage in Technology &amp; Supply
+        </h2>
+        <p class="text-brand-slate text-lg leading-relaxed mb-8">
+          {{ company.commitment }}
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/about" class="btn-primary">About the Company</a>
+          <a href="/compliance" class="btn-outline">View Compliance</a>
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2" data-animate="stagger-children">
+        @each((item, index) in company.whyChoose)
+          <div class="rounded-2xl bg-white p-6 shadow-sm border border-slate-200/70">
+            <div class="mb-4 font-display text-2xl font-extrabold text-gradient">0{{ index + 1 }}</div>
+            <h3 class="font-display font-bold text-brand-navy mb-2">{{ item.title }}</h3>
+            <p class="text-sm text-brand-slate leading-relaxed">{{ item.description }}</p>
+          </div>
+        @endeach
+      </div>
+    </div>
+  </div>
+</section>
