@@ -59,10 +59,15 @@ export function initAnimations() {
         trigger: el.parentElement,
         start: 'top bottom',
         end: 'bottom top',
-        scrub: true,
+        scrub: 0.5,
+        invalidateOnRefresh: true,
+        onToggle: (self) => {
+          el.style.willChange = self.isActive ? 'transform' : 'auto'
+        },
       },
-      yPercent: 20,
+      yPercent: 12,
       ease: 'none',
+      force3D: true,
     })
   })
 

@@ -1,6 +1,6 @@
 <section class="relative overflow-hidden bg-brand-ink text-white">
   <div class="absolute inset-0">
-    <img src="/images/hero-bg.jpg" alt="" class="h-full w-full object-cover" data-animate="parallax" loading="eager" />
+    <img src="/images/hero-bg.jpg" alt="" class="h-full w-full object-cover" data-animate="parallax" loading="eager" fetchpriority="high" decoding="async" />
   </div>
   <div class="absolute inset-0 bg-gradient-to-br from-brand-ink/95 via-brand-navy/85 to-brand-blue/55"></div>
   <div class="absolute inset-0 grid-pattern opacity-40"></div>
@@ -20,7 +20,7 @@
 
       <div class="mb-10 flex flex-wrap gap-3">
         @each(cred in company.heroCredentials)
-          <div class="rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 backdrop-blur-sm">
+          <div class="rounded-xl border border-white/15 bg-white/10 px-4 py-2.5">
             <div class="text-[0.65rem] font-semibold uppercase tracking-wider text-brand-sky">{{ cred.label }}</div>
             <div class="font-display text-sm font-bold text-white">{{ cred.value }}</div>
           </div>
