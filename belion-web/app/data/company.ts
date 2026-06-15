@@ -439,12 +439,22 @@ export const company = {
       { label: 'Organogram', href: '/organogram' },
       { label: 'Compliance', href: '/compliance' },
     ],
+    services: [
+      { label: 'IT & Technology', href: '/services' },
+      { label: 'Multimedia & Creative', href: '/services' },
+      { label: 'Equipment Supply', href: '/services' },
+    ],
     main: [
       { label: 'Services', href: '/services' },
       { label: 'Projects', href: '/projects' },
       { label: 'Contact', href: '/contact' },
     ],
   },
+  social: [
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/', icon: 'linkedin' },
+    { name: 'Facebook', href: 'https://www.facebook.com/', icon: 'facebook' },
+    { name: 'Email', href: 'mailto:sales@beliongroupe.com', icon: 'mail' },
+  ],
   serviceInterests: [
     'Software Development',
     'Mobile Apps',
