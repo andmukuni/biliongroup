@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title ? `${title} | ${company.name}` : company.name }}</title>
+    <meta name="description" content="{{ description || company.description }}" />
+    <meta property="og:title" content="{{ title ? `${title} | ${company.name}` : company.name }}" />
+    <meta property="og:description" content="{{ description || company.description }}" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0284c7" />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+      href="https://fonts.bunny.net/css?family=inter:400,500,600,700|plus-jakarta-sans:600,700,800"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "{{ company.name }}",
+        "url": "https://www.beliongroupe.com",
+        "email": "sales@beliongroupe.com",
+        "telephone": "+260957601191",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Plot 5085, Luanshya Road",
+          "addressLocality": "Lusaka",
+          "addressCountry": "ZM"
+        }
+      }
+    </script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('styles')
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand-blue focus:px-4 focus:py-2 focus:text-white"
+    >
+      Skip to content
+    </a>
+
+    @include('components/topbar')
+    @include('components/navbar')
+
+    <main id="main-content" class="flex-1">
+      @!section('main')
+    </main>
+
+    @include('components/footer')
+    @include('components/copyright')
+
+    @stack('scripts')
+  </body>
+</html>

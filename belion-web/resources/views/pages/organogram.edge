@@ -1,0 +1,42 @@
+@layout('layouts/main')
+
+@section('main')
+  @set('pageHeroTitle', 'Organization Structure')
+  @set('pageHeroSubtitle', 'Our leadership and organizational framework.')
+  @set('pageHeroImage', '/images/about-team.jpg')
+  @set('pageHeroBreadcrumb', 'Company')
+  @include('components/page_hero')
+
+  <section class="section-padding mx-auto max-w-7xl">
+    <div class="grid sm:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto" data-animate="stagger-children">
+      @each(leader in company.leadership)
+        <div class="rounded-2xl border border-brand-ice bg-white p-8 shadow-sm">
+          <h3 class="font-display text-xl font-bold text-brand-navy">{{ leader.name }}</h3>
+          <p class="text-brand-blue font-medium mb-4">{{ leader.role }}</p>
+          <div class="space-y-1 text-sm text-brand-slate">
+            <a href="tel:{{ leader.phone }}" class="block hover:text-brand-blue">{{ leader.phone }}</a>
+            <a href="mailto:{{ leader.email }}" class="block hover:text-brand-blue">{{ leader.email }}</a>
+          </div>
+        </div>
+      @endeach
+    </div>
+
+    @include('components/org_chart')
+
+    <div class="rounded-3xl border-2 border-brand-blue/20 bg-white p-8 sm:p-10" data-animate="fade-up">
+      <h2 class="font-display text-2xl font-bold text-brand-navy mb-6">Banking Details</h2>
+      <div class="grid sm:grid-cols-2 gap-4 text-sm">
+        <div><span class="text-brand-slate">Account Name:</span> <strong>{{ company.banking.accountName }}</strong></div>
+        <div><span class="text-brand-slate">Bank:</span> <strong>{{ company.banking.bankName }}</strong></div>
+        <div><span class="text-brand-slate">Branch:</span> <strong>{{ company.banking.branchName }}</strong></div>
+        <div><span class="text-brand-slate">ZMW Account:</span> <strong>{{ company.banking.zmwAccount }}</strong></div>
+        <div><span class="text-brand-slate">USD Account:</span> <strong>{{ company.banking.usdAccount }}</strong></div>
+        <div><span class="text-brand-slate">Sort Code:</span> <strong>{{ company.banking.sortCode }}</strong></div>
+        <div><span class="text-brand-slate">Swift Code:</span> <strong>{{ company.banking.swiftCode }}</strong></div>
+        <div><span class="text-brand-slate">Bank Code:</span> <strong>{{ company.banking.bankCode }}</strong></div>
+      </div>
+    </div>
+  </section>
+
+  @include('components/cta_band')
+@end

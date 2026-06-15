@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "name": "belion-web",
+  "build": {
+    "type": "dockerfile",
+    "dockerfile": "Dockerfile"
+  },
+  "domains": {
+    "ports_exposes": "3333"
+  },
+  "healthcheck": {
+    "path": "/health",
+    "port": "3333"
+  }
+}

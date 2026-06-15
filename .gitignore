@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# AdonisJS app artifacts
+belion-web/node_modules/
+belion-web/build/
+belion-web/tmp/
+belion-web/.env
+belion-web/public/assets/

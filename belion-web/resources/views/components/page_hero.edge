@@ -1,0 +1,17 @@
+<section class="relative overflow-hidden bg-brand-navy text-white">
+  <div class="absolute inset-0 opacity-25">
+    <img src="{{ pageHeroImage || '/images/hero-bg.jpg' }}" alt="" class="h-full w-full object-cover" />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-brand-navy/95 to-brand-blue/70"></div>
+  <div class="relative mx-auto max-w-7xl section-padding py-20 sm:py-28">
+    <div class="max-w-3xl" data-animate="fade-up">
+      @if(pageHeroBreadcrumb)
+        <p class="text-brand-sky text-sm font-medium mb-3">{{ pageHeroBreadcrumb }}</p>
+      @endif
+      <h1 class="font-display text-4xl sm:text-5xl font-bold mb-4">{{ pageHeroTitle }}</h1>
+      @if(pageHeroSubtitle)
+        <p class="text-lg text-slate-200 leading-relaxed">{{ pageHeroSubtitle }}</p>
+      @endif
+    </div>
+  </div>
+</section>

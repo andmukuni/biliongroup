@@ -1,0 +1,50 @@
+<footer class="bg-brand-navy text-white">
+  <div class="mx-auto max-w-7xl section-padding pb-8">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue font-display font-bold">B</div>
+          <div>
+            <div class="font-display font-bold">Belion Groupe</div>
+            <div class="text-sm text-brand-sky">{{ company.motto }}</div>
+          </div>
+        </div>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Diversified technology and multimedia solutions since {{ company.established }}.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-display font-semibold mb-4 text-brand-sky">Company</h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          @each(item in company.nav.company)
+            <li><a href="{{ item.href }}" class="hover:text-white transition">{{ item.label }}</a></li>
+          @endeach
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display font-semibold mb-4 text-brand-sky">Services</h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          <li><a href="/services" class="hover:text-white transition">IT & Technology</a></li>
+          <li><a href="/services" class="hover:text-white transition">Multimedia</a></li>
+          <li><a href="/projects" class="hover:text-white transition">Projects</a></li>
+          <li><a href="/compliance" class="hover:text-white transition">Compliance</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display font-semibold mb-4 text-brand-sky">Contact</h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          <li>{{ company.contact.address }}</li>
+          @each(phone in company.contact.phones)
+            <li><a href="tel:{{ phone }}" class="hover:text-white transition">{{ phone }}</a></li>
+          @endeach
+          @each(email in company.contact.emails)
+            <li><a href="mailto:{{ email }}" class="hover:text-white transition">{{ email }}</a></li>
+          @endeach
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

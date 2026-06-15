@@ -1,0 +1,48 @@
+@layout('layouts/main')
+
+@section('main')
+  @set('pageHeroTitle', 'Products & Services')
+  @set('pageHeroSubtitle', 'Comprehensive IT, technology, multimedia and equipment solutions.')
+  @set('pageHeroImage', '/images/services-it.jpg')
+  @set('pageHeroBreadcrumb', 'Services')
+  @include('components/page_hero')
+
+  <section class="section-padding mx-auto max-w-7xl" x-data="{ tab: 'it', search: '' }">
+    <div class="flex flex-col sm:flex-row gap-4 justify-between items-center mb-10" data-animate="fade-up">
+      <div class="flex rounded-full bg-brand-ice p-1">
+        <button @click="tab = 'it'" :class="tab === 'it' ? 'bg-brand-blue text-white' : 'text-brand-slate'" class="rounded-full px-6 py-2.5 text-sm font-semibold transition">IT & Technology</button>
+        <button @click="tab = 'multimedia'" :class="tab === 'multimedia' ? 'bg-brand-blue text-white' : 'text-brand-slate'" class="rounded-full px-6 py-2.5 text-sm font-semibold transition">Multimedia</button>
+      </div>
+      <input x-model="search" type="search" placeholder="Search services..." class="w-full sm:w-72 rounded-full border border-brand-ice px-5 py-2.5 text-sm focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20" />
+    </div>
+
+    <div x-show="tab === 'it'" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" data-animate="stagger-children">
+      @each(service in company.itServices)
+        <div class="rounded-xl border border-brand-ice bg-white p-5 hover:border-brand-sky hover:shadow-lg transition flex gap-4">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-ice text-brand-blue">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <span class="text-brand-ink font-medium">{{ service }}</span>
+        </div>
+      @endeach
+    </div>
+
+    <div x-show="tab === 'multimedia'" x-cloak class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      @each(service in company.multimediaServices)
+        <div class="rounded-xl border border-brand-ice bg-white p-5 hover:border-brand-sky hover:shadow-lg transition flex gap-4">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-ice text-brand-blue">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+          </div>
+          <span class="text-brand-ink font-medium">{{ service }}</span>
+        </div>
+      @endeach
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-2 gap-8" data-animate="fade-up">
+      <img src="/images/services-it.jpg" alt="IT Services" class="rounded-2xl shadow-lg" loading="lazy" />
+      <img src="/images/services-multimedia.jpg" alt="Multimedia Services" class="rounded-2xl shadow-lg" loading="lazy" />
+    </div>
+  </section>
+
+  @include('components/cta_band')
+@end

@@ -1,0 +1,92 @@
+@layout('layouts/main')
+
+@section('main')
+  @set('pageHeroTitle', 'Contact Us')
+  @set('pageHeroSubtitle', 'Get in touch with our team for inquiries and project quotes.')
+  @set('pageHeroImage', '/images/contact-office.jpg')
+  @set('pageHeroBreadcrumb', 'Contact')
+  @include('components/page_hero')
+
+  <section class="section-padding mx-auto max-w-7xl">
+    @if(flashSuccess)
+      <div class="mb-8 rounded-xl bg-brand-success/10 border border-brand-success/30 p-4 text-brand-success font-medium" data-animate="fade-up">
+        {{ flashSuccess }}
+      </div>
+    @endif
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div data-animate="fade-up">
+        <h2 class="font-display text-2xl font-bold text-brand-navy mb-6">Get In Touch</h2>
+        <div class="space-y-6 text-brand-slate">
+          <div>
+            <h3 class="font-semibold text-brand-ink mb-1">Address</h3>
+            <p>{{ company.contact.address }}</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-brand-ink mb-1">Phone</h3>
+            @each(phone in company.contact.phones)
+              <a href="tel:{{ phone }}" class="block hover:text-brand-blue">{{ phone }}</a>
+            @endeach
+          </div>
+          <div>
+            <h3 class="font-semibold text-brand-ink mb-1">Email</h3>
+            @each(email in company.contact.emails)
+              <a href="mailto:{{ email }}" class="block hover:text-brand-blue">{{ email }}</a>
+            @endeach
+          </div>
+          <div>
+            <h3 class="font-semibold text-brand-ink mb-1">Websites</h3>
+            @each(site in company.contact.websites)
+              <a href="https://{{ site }}" target="_blank" rel="noopener" class="block hover:text-brand-blue">{{ site }}</a>
+            @endeach
+          </div>
+        </div>
+        <div class="mt-8 rounded-2xl overflow-hidden shadow-lg h-64">
+          <iframe title="Belion Groupe Location" class="h-full w-full border-0" loading="lazy" src="https://maps.google.com/maps?q=Plot+5085+Luanshya+Road+Lusaka+Zambia&output=embed"></iframe>
+        </div>
+        <img src="/images/contact-office.jpg" alt="Office" class="mt-6 rounded-2xl shadow-lg w-full" loading="lazy" />
+      </div>
+
+      <div class="rounded-3xl border border-brand-ice bg-white p-8 shadow-xl" data-animate="scale-in">
+        <h2 class="font-display text-2xl font-bold text-brand-navy mb-6">Send an Inquiry</h2>
+        <form action="/contact" method="POST" class="space-y-5">
+          {{ csrfField() }}
+          <div>
+            <label for="fullName" class="block text-sm font-medium text-brand-ink mb-1">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required class="w-full rounded-xl border border-brand-ice px-4 py-3 text-sm focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20" />
+          </div>
+          <div>
+            <label for="company" class="block text-sm font-medium text-brand-ink mb-1">Company</label>
+            <input type="text" id="company" name="company" class="w-full rounded-xl border border-brand-ice px-4 py-3 text-sm focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20" />
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="email" class="block text-sm font-medium text-brand-ink mb-1">Email *</label>
+              <input type="email" id="email" name="email" required class="w-full rounded-xl border border-brand-ice px-4 py-3 text-sm focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20" />
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-brand-ink mb-1">Phone</label>
+              <input type="tel" id="phone" name="phone" class="w-full rounded-xl border border-brand-ice px-4 py-3 text-sm focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20" />
+            </div>
+          </div>
+          <div>
+            <label for="serviceInterest" class="block text-sm font-medium text-brand-ink mb-1">Service Interest *</label>
+            <select id="serviceInterest" name="serviceInterest" required class="w-full rounded-xl border border-brand-ice px-4 py-3 text-sm focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20">
+              <option value="">Select a service</option>
+              @each(interest in company.serviceInterests)
+                <option value="{{ interest }}">{{ interest }}</option>
+              @endeach
+            </select>
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-brand-ink mb-1">Message *</label>
+            <textarea id="message" name="message" rows="5" required class="w-full rounded-xl border border-brand-ice px-4 py-3 text-sm focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"></textarea>
+          </div>
+          <button type="submit" class="w-full rounded-full bg-brand-cta py-3.5 font-semibold text-white shadow-lg hover:bg-brand-blue transition">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+@end

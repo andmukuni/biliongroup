@@ -1,0 +1,41 @@
+@layout('layouts/main')
+
+@section('main')
+  @set('pageHeroTitle', 'Projects Portfolio')
+  @set('pageHeroSubtitle', 'Delivering excellence across telecoms, industrial, and technology sectors.')
+  @set('pageHeroImage', '/images/projects-telecom.jpg')
+  @set('pageHeroBreadcrumb', 'Projects')
+  @include('components/page_hero')
+
+  <section class="section-padding mx-auto max-w-7xl" x-data="{ filter: 'all' }">
+    <div class="flex flex-wrap justify-center gap-2 mb-12" data-animate="fade-up">
+      <button @click="filter = 'all'" :class="filter === 'all' ? 'bg-brand-blue text-white' : 'bg-brand-ice text-brand-slate'" class="rounded-full px-4 py-2 text-sm font-medium transition">All</button>
+      @each(category in company.projectCategories)
+        <button @click="filter = '{{ category.slug }}'" :class="filter === '{{ category.slug }}' ? 'bg-brand-blue text-white' : 'bg-brand-ice text-brand-slate'" class="rounded-full px-4 py-2 text-sm font-medium transition">{{ category.title }}</button>
+      @endeach
+    </div>
+
+    <div class="space-y-12">
+      @each(category in company.projectCategories)
+        <div id="{{ category.slug }}" x-show="filter === 'all' || filter === '{{ category.slug }}'" class="scroll-mt-24 rounded-3xl overflow-hidden border border-brand-ice bg-white shadow-sm" data-animate="fade-up">
+          <div class="grid lg:grid-cols-2">
+            <img src="{{ category.image }}" alt="{{ category.title }}" class="h-64 lg:h-full w-full object-cover" loading="lazy" />
+            <div class="p-8 sm:p-10">
+              <h2 class="font-display text-2xl font-bold text-brand-navy mb-6">{{ category.title }}</h2>
+              <ul class="grid sm:grid-cols-2 gap-3">
+                @each(item in category.items)
+                  <li class="flex items-start gap-2 text-brand-slate">
+                    <svg class="h-5 w-5 shrink-0 text-brand-success mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    {{ item }}
+                  </li>
+                @endeach
+              </ul>
+            </div>
+          </div>
+        </div>
+      @endeach
+    </div>
+  </section>
+
+  @include('components/cta_band')
+@end

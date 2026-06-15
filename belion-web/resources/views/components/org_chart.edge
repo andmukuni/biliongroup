@@ -1,0 +1,20 @@
+    <div class="rounded-3xl bg-brand-ice p-8 sm:p-12 mb-16" data-animate="fade-up">
+      <h2 class="font-display text-2xl font-bold text-brand-navy mb-8 text-center">Organizational Chart</h2>
+      <div class="flex flex-col items-center gap-3 max-w-4xl mx-auto">
+        <div class="rounded-xl bg-brand-navy text-white px-6 py-3 font-semibold text-center">Advisory Board</div>
+        <div class="w-px h-6 bg-brand-blue"></div>
+        <div class="rounded-xl bg-brand-blue text-white px-6 py-3 font-semibold text-center">Managing Director</div>
+        <div class="w-px h-6 bg-brand-sky"></div>
+        <div class="rounded-xl bg-brand-sky text-brand-navy px-6 py-3 font-semibold text-center">Director</div>
+        <div class="w-px h-6 bg-brand-sky/50"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 w-full">
+          @each(node in company.organogram)
+            @if(node.level >= 3)
+              <div class="rounded-lg bg-white border border-brand-sky/30 px-3 py-3 text-center text-sm font-medium text-brand-navy shadow-sm">
+                {{ node.role }}
+              </div>
+            @endif
+          @endeach
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,94 @@
+<header
+  x-data="{ open: false, companyOpen: false }"
+  class="sticky top-0 z-40 glass-nav"
+>
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-sky text-white font-display font-bold text-lg shadow-lg">
+          B
+        </div>
+        <div class="hidden sm:block">
+          <div class="font-display font-bold text-brand-navy leading-tight">Belion Groupe</div>
+          <div class="text-xs text-brand-slate">{{ company.tagline }}</div>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex lg:items-center lg:gap-1">
+        <div class="relative" @mouseenter="companyOpen = true" @mouseleave="companyOpen = false">
+          <button
+            type="button"
+            class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-brand-ink hover:bg-brand-ice hover:text-brand-blue transition {{ currentPath.startsWith('/about') || currentPath.startsWith('/vision') || currentPath.startsWith('/organogram') || currentPath.startsWith('/compliance') ? 'text-brand-blue bg-brand-ice' : '' }}"
+            @click="companyOpen = !companyOpen"
+          >
+            Company
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            x-show="companyOpen"
+            x-transition
+            class="absolute left-0 top-full mt-1 w-52 rounded-xl border border-brand-ice bg-white py-2 shadow-xl"
+            x-cloak
+          >
+            @each(item in company.nav.company)
+              <a
+                href="{{ item.href }}"
+                class="block px-4 py-2 text-sm text-brand-ink hover:bg-brand-ice hover:text-brand-blue {{ currentPath === item.href ? 'text-brand-blue font-semibold' : '' }}"
+              >
+                {{ item.label }}
+              </a>
+            @endeach
+          </div>
+        </div>
+
+        @each(item in company.nav.main)
+          <a
+            href="{{ item.href }}"
+            class="rounded-lg px-3 py-2 text-sm font-medium text-brand-ink hover:bg-brand-ice hover:text-brand-blue transition {{ currentPath === item.href ? 'text-brand-blue bg-brand-ice' : '' }}"
+          >
+            {{ item.label }}
+          </a>
+        @endeach
+
+        <a
+          href="/contact"
+          class="ml-2 rounded-full bg-brand-cta px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-cta/30 hover:bg-brand-blue transition"
+        >
+          Get a Quote
+        </a>
+      </div>
+
+      <button
+        type="button"
+        class="lg:hidden rounded-lg p-2 text-brand-navy hover:bg-brand-ice"
+        @click="open = !open"
+        aria-label="Toggle menu"
+      >
+        <svg x-show="!open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg x-show="open" x-cloak class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div x-show="open" x-transition x-cloak class="lg:hidden border-t border-brand-ice pb-4">
+      <p class="px-3 pt-3 text-xs font-semibold uppercase tracking-wider text-brand-slate">Company</p>
+      @each(item in company.nav.company)
+        <a href="{{ item.href }}" class="block px-3 py-2 text-sm font-medium text-brand-ink hover:text-brand-blue">{{ item.label }}</a>
+      @endeach
+      <p class="px-3 pt-3 text-xs font-semibold uppercase tracking-wider text-brand-slate">Services</p>
+      @each(item in company.nav.main)
+        <a href="{{ item.href }}" class="block px-3 py-2 text-sm font-medium text-brand-ink hover:text-brand-blue">{{ item.label }}</a>
+      @endeach
+      <a href="/contact" class="mx-3 mt-3 block rounded-full bg-brand-cta px-5 py-2.5 text-center text-sm font-semibold text-white">Get a Quote</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  [x-cloak] { display: none !important; }
+</style>

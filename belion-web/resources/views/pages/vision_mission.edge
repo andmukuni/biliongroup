@@ -1,0 +1,46 @@
+@layout('layouts/main')
+
+@section('main')
+  @set('pageHeroTitle', 'Vision & Mission')
+  @set('pageHeroSubtitle', 'Leveraging technology to enhance the affordability of abundant life.')
+  @set('pageHeroImage', '/images/vision-africa.jpg')
+  @set('pageHeroBreadcrumb', 'Company')
+  @include('components/page_hero')
+
+  <section class="section-padding mx-auto max-w-7xl">
+    <div class="grid lg:grid-cols-2 gap-8 mb-16" data-animate="stagger-children">
+      <div class="rounded-3xl bg-brand-ice p-8 sm:p-10 border-l-4 border-brand-blue">
+        <h2 class="font-display text-2xl font-bold text-brand-navy mb-4">Our Vision</h2>
+        <blockquote class="text-lg text-brand-slate leading-relaxed italic">"{{ company.vision }}"</blockquote>
+      </div>
+      <div class="rounded-3xl bg-brand-navy p-8 sm:p-10 text-white">
+        <h2 class="font-display text-2xl font-bold mb-4">Our Mission</h2>
+        <blockquote class="text-lg text-slate-200 leading-relaxed italic">"{{ company.mission }}"</blockquote>
+      </div>
+    </div>
+
+    <div class="rounded-3xl bg-gradient-to-r from-brand-blue to-brand-sky p-8 sm:p-12 text-white text-center mb-16" data-animate="fade-up">
+      <h2 class="font-display text-2xl font-bold mb-4">Mission Statement</h2>
+      <p class="text-lg leading-relaxed max-w-3xl mx-auto">{{ company.missionStatement }}</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div data-animate="fade-up">
+        <img src="/images/vision-africa.jpg" alt="Vision for Africa" class="rounded-3xl shadow-xl" loading="lazy" />
+      </div>
+      <div data-animate="fade-up">
+        <h2 class="font-display text-3xl font-bold text-brand-navy mb-6">Our Objectives</h2>
+        <ol class="space-y-4">
+          @each((objective, index) in company.objectives)
+            <li class="flex gap-4">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-blue text-white text-sm font-bold">{{ index + 1 }}</span>
+              <span class="text-brand-slate pt-1">{{ objective }}</span>
+            </li>
+          @endeach
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  @include('components/cta_band')
+@end
