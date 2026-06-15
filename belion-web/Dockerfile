@@ -1,22 +1,26 @@
 # syntax=docker/dockerfile:1
 
-FROM node:22-alpine AS base
-RUN apk add --no-cache python3 make g++
+# Debian slim (glibc) avoids musl native-module issues with
+# @tailwindcss/oxide, lightningcss and better-sqlite3 during the Vite build.
+FROM node:22-slim AS base
 WORKDIR /app
 
 # Install all dependencies (including dev) for build
 FROM base AS deps
+RUN apt-get update && apt-get install -y --no-install-recommends python3 make g++ \
+    && rm -rf /var/lib/apt/lists/*
 COPY package.json package-lock.json ./
 RUN npm ci
 
 # Production-only dependencies (used by final image)
 FROM base AS production-deps
+RUN apt-get update && apt-get install -y --no-install-recommends python3 make g++ \
+    && rm -rf /var/lib/apt/lists/*
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 
 # Build application
-FROM base AS build
-COPY --from=deps /app/node_modules ./node_modules
+FROM deps AS build
 COPY . .
 # Coolify injects runtime env vars as build ARG/ENV (e.g. DB_CONNECTION=postgres).
 # Force SQLite here so `node ace build` never tries to boot a Postgres connection.
@@ -30,9 +34,9 @@ RUN APP_KEY="buildtimekey01234567890123456789012" \
     node ace build
 
 # Production runtime
-FROM node:22-alpine AS production
-RUN apk add --no-cache wget
-WORKDIR /app
+FROM base AS production
+RUN apt-get update && apt-get install -y --no-install-recommends wget \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
