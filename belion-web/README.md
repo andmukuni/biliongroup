@@ -125,7 +125,6 @@ For production, **PostgreSQL is strongly recommended**.
 | `/vision-mission` | Vision & Mission |
 | `/services` | Products & Services |
 | `/projects` | Projects portfolio |
-| `/organogram` | Organization + banking |
 | `/compliance` | Certificates |
 | `/contact` | Contact form |
 | `/health` | Health check (Coolify/Docker) |

@@ -46,13 +46,6 @@ export default class PagesController {
     })
   }
 
-  async organogram(ctx: HttpContext) {
-    return this.baseView('organogram', ctx, {
-      title: 'Organization Structure',
-      description: 'Leadership team and organizational structure.',
-    })
-  }
-
   async compliance(ctx: HttpContext) {
     return this.baseView('compliance', ctx, {
       title: 'Compliance & Certifications',

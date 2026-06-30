@@ -238,23 +238,6 @@ export const company = {
       ],
     },
   ],
-  organogram: [
-    { role: 'Advisory Board', level: 0 },
-    { role: 'Managing Director', level: 1 },
-    { role: 'Director', level: 2 },
-    { role: 'Finance & Operations', level: 3 },
-    { role: 'Accounts', level: 4, parent: 'Finance & Operations' },
-    { role: 'IT Technicians', level: 3 },
-    { role: 'Manager, IT Business Solutions', level: 3 },
-    { role: 'Sales & Marketing Manager', level: 3 },
-    { role: 'Commercial (Sales)', level: 3 },
-    { role: 'Front Office', level: 3 },
-    { role: 'Customer Care', level: 4, parent: 'Front Office' },
-    { role: 'Administration', level: 3 },
-    { role: 'Project Officers', level: 3 },
-    { role: 'Head, Engineering & Projects', level: 3 },
-    { role: 'Legal Council', level: 3 },
-  ],
   leadership: [
     {
       name: 'Blest Chipo Hangoma',
@@ -436,7 +419,6 @@ export const company = {
     company: [
       { label: 'About Us', href: '/about' },
       { label: 'Vision & Mission', href: '/vision-mission' },
-      { label: 'Organogram', href: '/organogram' },
       { label: 'Compliance', href: '/compliance' },
     ],
     services: [
