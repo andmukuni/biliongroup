@@ -185,7 +185,7 @@ export const company = {
     {
       slug: 'ventilation-hvac',
       title: 'Ventilation & HVAC',
-      image: '/images/projects-industrial.jpg',
+      image: '/images/projects-hvac.jpg',
       items: [
         'Industrial Ventilation Fans',
         'Aircons Maintenance & Supply',
