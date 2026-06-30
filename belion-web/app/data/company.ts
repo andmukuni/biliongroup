@@ -205,7 +205,7 @@ export const company = {
     {
       slug: 'oils-fuel',
       title: 'Oils & Fuel',
-      image: '/images/projects-industrial.jpg',
+      image: '/images/projects-oils-fuel.jpg',
       items: [
         'Industrial Machinery Oil',
         'Mobility Bulk Fuel Supply',
