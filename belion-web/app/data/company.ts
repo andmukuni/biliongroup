@@ -174,7 +174,7 @@ export const company = {
     {
       slug: 'vehicles-agriculture',
       title: 'Vehicles & Agriculture',
-      image: '/images/projects-industrial.jpg',
+      image: '/images/projects-agriculture.jpg',
       items: [
         'Heavy Duty Vehicles Supply',
         'Forestry Machinery Supply',
